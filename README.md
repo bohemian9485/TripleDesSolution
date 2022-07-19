@@ -1,3 +1,3 @@
 # TripleDesSolution
 
-A simple cryptography project using Triple DES (my first attempt at writing using C#).
+A simple cryptography project using Triple DES (my first attempt at writing code using C#).
