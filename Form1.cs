@@ -28,10 +28,12 @@ namespace TripleDesSolution
                     {
                         MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
                         UTF8Encoding utf8 = new UTF8Encoding();
-                        TripleDESCryptoServiceProvider tDES = new TripleDESCryptoServiceProvider();
-                        tDES.Key = md5.ComputeHash(utf8.GetBytes(textBox1.Text));
-                        tDES.Mode = CipherMode.ECB;
-                        tDES.Padding = PaddingMode.PKCS7;
+                        TripleDESCryptoServiceProvider tDES = new TripleDESCryptoServiceProvider
+                        {
+                            Key = md5.ComputeHash(utf8.GetBytes(textBox1.Text)),
+                            Mode = CipherMode.ECB,
+                            Padding = PaddingMode.PKCS7
+                        };
                         ICryptoTransform trans = tDES.CreateEncryptor();
                         textBox3.Text = BitConverter.ToString(trans.TransformFinalBlock(utf8.GetBytes(textBox2.Text), 0, utf8.GetBytes(textBox2.Text).Length));
                         textBox4.Text = textBox3.TextLength.ToString();
